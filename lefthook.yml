@@ -51,7 +51,7 @@ pre-push:
         if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
           export GODOT_BIN='C:\Program Files\Godot\Godot_v4.4.1-stable_win64.exe'
         elif [[ "$OSTYPE" == "darwin"* ]]; then
-            export GODOT_BIN=/Applications/Godot.app/Contents/MacOS/Godot
+            export GODOT_BIN=/Applications/Godot-4.4.1-stable.app/Contents/MacOS/Godot
         else
           export GODOT_BIN=godot
         fi
