@@ -138,7 +138,7 @@
 
     <script src="index.js"></script>
     <script>
-      const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":666544,"index.wasm":43699190},"focusCanvas":true,"gdextensionLibs":[],"serviceWorker":"index.service.worker.js"};
+      const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":669568,"index.wasm":43699190},"focusCanvas":true,"gdextensionLibs":[],"serviceWorker":"index.service.worker.js"};
       const GODOT_THREADS_ENABLED = false;
       const engine = new Engine(GODOT_CONFIG);
 
@@ -257,6 +257,59 @@
             }, displayFailureNotice);
         }
       })();
+    </script>
+    <script>
+      let voice_name = "";
+      let voice_list = [];
+      let voice_json = "";
+
+      function setup_voices() {
+        voices = speechSynthesis.getVoices();
+        window.voices = voices;
+        console.log("voices: " + voices.length);
+
+        voices.forEach((voice, idx) => {
+          // console.log(
+          //   `Voice ${idx}: name="${voice.name}", lang="${voice.lang}"`
+          // );
+
+          voice_list.push({
+            index: idx,
+            name: voice.name,
+            lang: voice.lang,
+          });
+        });
+
+        voice_json = JSON.stringify(voice_list);
+      }
+
+      speechSynthesis.onvoiceschanged = setup_voices;
+
+      function speakText(text) {
+        console.log("Speaking text: ", text);
+
+        if (speechSynthesis.speaking) {
+          speechSynthesis.cancel();
+        }
+
+        const utterance = new SpeechSynthesisUtterance(text);
+
+        if (voices.length > 0) {
+          const japanese_voice = voices.find((voice) =>
+            voice.lang.includes("ja")
+          );
+
+          if (japanese_voice) {
+            utterance.voice = japanese_voice;
+            console.log("Using Japanese voice: ", japanese_voice.name);
+          } else {
+            utterance.voice = voices[0];
+            console.log("Using default voice: ", voices[0].name);
+          }
+        }
+
+        speechSynthesis.speak(utterance);
+      }
     </script>
   </body>
 </html>
