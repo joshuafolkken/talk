@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Talk"
-config/version="0.1.1"
-run/main_scene="uid://djcdy0d718ei3"
+config/version="0.2.0"
+run/main_scene="uid://ck0e78dj2sxj3"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -26,6 +26,8 @@ gdscript/warnings/unsafe_call_argument=1
 
 [display]
 
+window/size/viewport_width=540
+window/size/viewport_height=960
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
