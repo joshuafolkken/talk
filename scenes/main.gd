@@ -1,6 +1,7 @@
 extends Node2D
 
-# var _js_on_voices_ready := JavaScriptBridge.create_callback(_on_voices_ready)
+var _on_stt_result_js := JavaScriptBridge.create_callback(_on_stt_result)
+var _on_stt_end_js := JavaScriptBridge.create_callback(_on_stt_end)
 
 var _voice_list: Array[Voice] = []
 
@@ -14,20 +15,27 @@ class Voice:
 
 
 func _init() -> void:
-	_load_tts_js()
+	_eval_js("res://assets/js/stt.js")
+	_eval_js("res://assets/js/tts.js")
+
+	var stt := JavaScriptBridge.get_interface("stt")
+	stt.call("set_on_result", _on_stt_result_js)
+	stt.call("set_on_end", _on_stt_end_js)
 
 
-func _load_tts_js() -> void:
-	var tts_path := "res://assets/js/tts.js"
-	var tts_js := ""
-	var file := FileAccess.open(tts_path, FileAccess.READ)
-	if file:
-		tts_js = file.get_as_text()
-		file.close()
-	else:
-		print("File not found: " + tts_path)
+func _on_stt_result(args: Array) -> void:
+	var result: String = args[0]
+	_text_edit.text = result
 
-	JavaScriptBridge.eval(tts_js)
+
+func _on_stt_end(_args: Array) -> void:
+	_on_text_to_speech_button_pressed()
+
+
+func _eval_js(path: String) -> void:
+	var file := FileAccess.open(path, FileAccess.READ)
+	var code := file.get_as_text()
+	JavaScriptBridge.eval(code)
 
 
 func _get_voices() -> bool:
@@ -53,11 +61,16 @@ func _get_voices() -> bool:
 	return true
 
 
-func _on_button_button_down() -> void:
+func _on_text_to_speech_button_pressed() -> void:
 	if _voice_list.size() == 0:
 		if !_get_voices():
-			print("声が取れないー")
+			Log.w("Voice not found")
 			return
 
 	var window := JavaScriptBridge.get_interface("tts")
 	window.call("speak_text", _text_edit.text)
+
+
+func _on_speech_to_text_button_pressed() -> void:
+	var stt := JavaScriptBridge.get_interface("stt")
+	stt.call("start")
