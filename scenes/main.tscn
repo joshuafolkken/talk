@@ -10,31 +10,46 @@ script = ExtResource("1_o5qli")
 
 [node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
 offset_left = 19.0
-offset_top = 22.0
+offset_top = 101.0
 offset_right = 520.0
-offset_bottom = 182.0
-text = "ご利用ありがとうございます。Text to Speech ボタンを押すと、このテキストを喋ります。Speech to Text ボタンを押すと、自分が話した内容がテキストになり、復唱もします。"
+offset_bottom = 475.0
+theme_override_font_sizes/font_size = 24
+text = "音声認識アプリの使い方
+
+1.  「Speech to Text」ボタンを押す
+話した内容が自動でテキストに変換されます
+
+2. 音声認識後
+認識されたテキストが自動で復唱されます
+
+3. テキストの編集
+表示されたテキストを自由に編集できます"
 wrap_mode = 1
+metadata/_edit_group_ = true
 
 [node name="TextToSpeechButton" type="Button" parent="CanvasLayer"]
-offset_left = 19.0
-offset_top = 191.0
-offset_right = 518.0
-offset_bottom = 261.0
+offset_left = 21.0
+offset_top = 487.0
+offset_right = 520.0
+offset_bottom = 557.0
+theme_override_font_sizes/font_size = 24
 text = "Text to Speech"
+metadata/_edit_group_ = true
 
 [node name="SpeechToTextButton" type="Button" parent="CanvasLayer"]
 offset_left = 20.0
-offset_top = 273.0
+offset_top = 21.0
 offset_right = 519.0
-offset_bottom = 343.0
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 24
 text = "Speech to Text"
+metadata/_edit_group_ = true
 
 [node name="OptionButton" type="OptionButton" parent="CanvasLayer"]
 offset_left = 23.0
-offset_top = 537.0
+offset_top = 728.0
 offset_right = 55.0
-offset_bottom = 557.0
+offset_bottom = 748.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 offset_right = 40.0
