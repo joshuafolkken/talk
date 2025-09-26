@@ -1,6 +1,6 @@
-class TTS {
+class TextToSpeech {
   constructor() {
-    this._voices
+    this._voices = []
     this._voice_list = []
     this._voice_json = ''
     this._on_voices_ready = null
@@ -58,4 +58,4 @@ class TTS {
   }
 }
 
-window.tts = new TTS()
+window.text_to_speech = new TextToSpeech()

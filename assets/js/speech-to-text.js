@@ -1,4 +1,4 @@
-class STT {
+class SpeechToText {
   constructor() {
     this._recognition = null
     this._on_result = null
@@ -34,4 +34,4 @@ class STT {
   }
 }
 
-window.stt = new STT()
+window.speech_to_text = new SpeechToText()

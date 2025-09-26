@@ -9,21 +9,15 @@ var _voices: Array[Voice] = []
 @onready var _text_edit: TextEdit = $CanvasLayer/TextEdit
 
 
-class Voice:
-	var index: int
-	var name: String
-	var lang: String
-
-
 func _init() -> void:
-	_eval_js("res://assets/js/tts.js")
-	_eval_js("res://assets/js/stt.js")
+	_eval_js("res://assets/js/text-to-speech.js")
+	_eval_js("res://assets/js/speech-to-text.js")
 
-	var tts := JavaScriptBridge.get_interface("tts")
-	tts.call("setup", _on_tts_voices_ready_js)
+	var text_to_speech := JavaScriptBridge.get_interface("text_to_speech")
+	text_to_speech.call("setup", _on_tts_voices_ready_js)
 
-	var stt := JavaScriptBridge.get_interface("stt")
-	stt.call("setup", _on_stt_result_js, _on_stt_end_js)
+	var speech_to_text := JavaScriptBridge.get_interface("speech_to_text")
+	speech_to_text.call("setup", _on_stt_result_js, _on_stt_end_js)
 
 
 func _on_tts_voices_ready(args: Array) -> void:
@@ -55,14 +49,15 @@ func _on_stt_end(_args: Array) -> void:
 func _eval_js(path: String) -> void:
 	var file := FileAccess.open(path, FileAccess.READ)
 	var code := file.get_as_text()
+	file.close()
 	JavaScriptBridge.eval(code)
 
 
 func _on_text_to_speech_button_pressed() -> void:
-	var tts := JavaScriptBridge.get_interface("tts")
-	tts.call("speak_text", _text_edit.text)
+	var text_to_speech := JavaScriptBridge.get_interface("text_to_speech")
+	text_to_speech.call("speak_text", _text_edit.text)
 
 
 func _on_speech_to_text_button_pressed() -> void:
-	var stt := JavaScriptBridge.get_interface("stt")
-	stt.call("start")
+	var speech_to_text := JavaScriptBridge.get_interface("speech_to_text")
+	speech_to_text.call("start")
