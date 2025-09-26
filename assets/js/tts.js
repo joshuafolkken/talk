@@ -3,6 +3,12 @@ class TTS {
     this._voices
     this._voice_list = []
     this._voice_json = ''
+    this._on_voices_ready = null
+  }
+
+  setup(on_voices_ready) {
+    this._on_voices_ready = on_voices_ready
+    speechSynthesis.onvoiceschanged = () => this.setup_voices()
   }
 
   setup_voices() {
@@ -19,12 +25,9 @@ class TTS {
     })
 
     this._voice_json = JSON.stringify(this._voice_list)
-    // this.on_voices_ready();
-    // console.log("voices: " + this._voices.length);
-  }
+    this._on_voices_ready(this._voice_json)
 
-  get_voice_json() {
-    return this._voice_json
+    console.log('voices: ' + this._voices.length)
   }
 
   speak_text(text) {
@@ -56,4 +59,3 @@ class TTS {
 }
 
 window.tts = new TTS()
-speechSynthesis.onvoiceschanged = () => window.tts.setup_voices()

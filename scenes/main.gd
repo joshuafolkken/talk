@@ -1,9 +1,10 @@
 extends Node2D
 
+var _on_tts_voices_ready_js := JavaScriptBridge.create_callback(_on_tts_voices_ready)
 var _on_stt_result_js := JavaScriptBridge.create_callback(_on_stt_result)
 var _on_stt_end_js := JavaScriptBridge.create_callback(_on_stt_end)
 
-var _voice_list: Array[Voice] = []
+var _voices: Array[Voice] = []
 
 @onready var _text_edit: TextEdit = $CanvasLayer/TextEdit
 
@@ -15,12 +16,31 @@ class Voice:
 
 
 func _init() -> void:
-	_eval_js("res://assets/js/stt.js")
 	_eval_js("res://assets/js/tts.js")
+	_eval_js("res://assets/js/stt.js")
+
+	var tts := JavaScriptBridge.get_interface("tts")
+	tts.call("setup", _on_tts_voices_ready_js)
 
 	var stt := JavaScriptBridge.get_interface("stt")
-	stt.call("set_on_result", _on_stt_result_js)
-	stt.call("set_on_end", _on_stt_end_js)
+	stt.call("setup", _on_stt_result_js, _on_stt_end_js)
+
+
+func _on_tts_voices_ready(args: Array) -> void:
+	var voices_json: String = args[0]
+	# print(voices_json)
+
+	var voices_data: Array = JSON.parse_string(voices_json)
+
+	for voice_data: Dictionary in voices_data:
+		var voice := Voice.new()
+		voice.index = voice_data.get("index", 0)
+		voice.name = voice_data.get("name", "")
+		voice.lang = voice_data.get("lang", "")
+		_voices.append(voice)
+
+	for voice in _voices:
+		print("index=%d, name=%s, lang=%s" % [voice.index, voice.name, voice.lang])
 
 
 func _on_stt_result(args: Array) -> void:
@@ -38,37 +58,9 @@ func _eval_js(path: String) -> void:
 	JavaScriptBridge.eval(code)
 
 
-func _get_voices() -> bool:
-	var tts := JavaScriptBridge.get_interface("tts")
-	var voice_json: String = tts.call("get_voice_json")
-
-	if voice_json == "":
-		return false
-
-	var voice_data_array: Array = JSON.parse_string(voice_json)
-	var voice_list: Array[Voice] = []
-
-	for voice_data: Dictionary in voice_data_array:
-		var voice := Voice.new()
-		voice.index = voice_data.get("index", 0)
-		voice.name = voice_data.get("name", "")
-		voice.lang = voice_data.get("lang", "")
-		voice_list.append(voice)
-
-	# for voice in voice_list:
-	# 	print("index=%d, name=%s, lang=%s" % [voice.index, voice.name, voice.lang])
-
-	return true
-
-
 func _on_text_to_speech_button_pressed() -> void:
-	if _voice_list.size() == 0:
-		if !_get_voices():
-			Log.w("Voice not found")
-			return
-
-	var window := JavaScriptBridge.get_interface("tts")
-	window.call("speak_text", _text_edit.text)
+	var tts := JavaScriptBridge.get_interface("tts")
+	tts.call("speak_text", _text_edit.text)
 
 
 func _on_speech_to_text_button_pressed() -> void:
