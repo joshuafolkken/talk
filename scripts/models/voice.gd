@@ -1,5 +1,5 @@
 class_name Voice
 
-var index: int
+var id: int
 var name: String
 var lang: String

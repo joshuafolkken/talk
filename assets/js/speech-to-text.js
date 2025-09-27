@@ -12,7 +12,8 @@ class SpeechToText {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition
     this._recognition = new SpeechRecognition()
-    this._recognition.lang = 'ja-JP'
+    this._recognition.lang = 'en-US'
+    // this._recognition.lang = 'ja-JP'
     this._recognition.interimResults = true
 
     this._recognition.onresult = (event) => {

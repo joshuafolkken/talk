@@ -4,6 +4,7 @@ var _text_to_speech: TextToSpeech
 var _speech_to_text: SpeechToText
 
 @onready var _text_edit: TextEdit = $CanvasLayer/TextEdit
+@onready var _voice_option_button: OptionButton = $CanvasLayer/VoiceOptionButton
 
 
 func _ready() -> void:
@@ -16,10 +17,16 @@ func _ready() -> void:
 
 
 func _on_voices_ready(voices: Array[Voice]) -> void:
+	_voice_option_button.clear()
+
 	Log.i("voices: %d" % voices.size())
 
-	# for voice in _voices:
-	# 	Log.d("index=%d, name=%s, lang=%s" % [voice.index, voice.name, voice.lang])
+	voices.sort_custom(func(a: Voice, b: Voice) -> bool: return a.lang < b.lang)
+
+	for voice in voices:
+		var text := "[%s] %s" % [voice.lang, voice.name]
+		_voice_option_button.add_item(text, voice.id)
+		Log.d("id=%d, name=%s, lang=%s" % [voice.id, voice.name, voice.lang])
 
 
 func _on_text_result_received(text: String) -> void:
@@ -31,7 +38,8 @@ func _on_recognition_ended() -> void:
 
 
 func _on_text_to_speech_button_pressed() -> void:
-	_text_to_speech.speak(_text_edit.text)
+	var voice_name := _voice_option_button.text.split("] ")[-1]
+	_text_to_speech.speak(_text_edit.text, voice_name)
 
 
 func _on_speech_to_text_button_pressed() -> void:
