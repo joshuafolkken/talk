@@ -27,10 +27,10 @@ class TextToSpeech {
     this._voice_json = JSON.stringify(this._voice_list)
     this._on_voices_ready(this._voice_json)
 
-    console.log('voices: ' + this._voices.length)
+    // console.log('voices: ' + this._voices.length)
   }
 
-  speak_text(text) {
+  speak(text) {
     // console.log("Speaking text: ", text);
 
     if (speechSynthesis.speaking) {
