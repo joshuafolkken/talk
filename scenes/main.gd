@@ -21,7 +21,12 @@ func _on_voices_ready(voices: Array[Voice]) -> void:
 
 	Log.i("voices: %d" % voices.size())
 
-	voices.sort_custom(func(a: Voice, b: Voice) -> bool: return a.lang < b.lang)
+	voices.sort_custom(
+		func(a: Voice, b: Voice) -> bool:
+			if a.lang == b.lang:
+				return a.id < b.id
+			return a.lang < b.lang
+	)
 
 	for voice in voices:
 		var text := "[%s] %s" % [voice.lang, voice.name]
