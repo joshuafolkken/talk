@@ -24,7 +24,7 @@ func _on_voices_ready(args: Array) -> void:
 
 	for voice_data: Dictionary in voices_data:
 		var voice := Voice.new()
-		voice.index = voice_data.get("index", 0)
+		voice.id = voice_data.get("id", 0)
 		voice.name = voice_data.get("name", "")
 		voice.lang = voice_data.get("lang", "")
 		_voices.append(voice)
@@ -32,5 +32,5 @@ func _on_voices_ready(args: Array) -> void:
 	voices_ready.emit(_voices)
 
 
-func speak(text: String) -> void:
-	_js.call("speak", text)
+func speak(text: String, voice_name: String) -> void:
+	_js.call("speak", text, voice_name)
