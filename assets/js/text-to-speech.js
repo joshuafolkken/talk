@@ -1,6 +1,6 @@
-class TTS {
+class TextToSpeech {
   constructor() {
-    this._voices
+    this._voices = []
     this._voice_list = []
     this._voice_json = ''
     this._on_voices_ready = null
@@ -27,10 +27,10 @@ class TTS {
     this._voice_json = JSON.stringify(this._voice_list)
     this._on_voices_ready(this._voice_json)
 
-    console.log('voices: ' + this._voices.length)
+    // console.log('voices: ' + this._voices.length)
   }
 
-  speak_text(text) {
+  speak(text) {
     // console.log("Speaking text: ", text);
 
     if (speechSynthesis.speaking) {
@@ -58,4 +58,4 @@ class TTS {
   }
 }
 
-window.tts = new TTS()
+window.text_to_speech = new TextToSpeech()
