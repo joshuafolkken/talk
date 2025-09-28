@@ -21,7 +21,37 @@ func _ready() -> void:
 		_language_option_button.add_item(language.get_name())
 
 
-func _on_voices_ready(voices: Array[Voice]) -> void:
+func _on_voices_ready() -> void:
+	_on_language_option_button_item_selected(-1)
+
+
+func _on_text_result_received(text: String) -> void:
+	_text_edit.text = text
+
+
+func _on_recognition_ended() -> void:
+	_on_text_to_speech_button_pressed()
+
+
+func _get_current_language_code() -> String:
+	var lang_name := _language_option_button.text
+	return Language.get_code_by_name(lang_name)
+
+
+func _on_speech_to_text_button_pressed() -> void:
+	var lang_code := _get_current_language_code()
+	_speech_to_text.start(lang_code)
+
+
+func _on_text_to_speech_button_pressed() -> void:
+	var voice_uri: String = _voice_option_button.get_selected_metadata()
+	_text_to_speech.speak(_text_edit.text, voice_uri)
+
+
+func _on_language_option_button_item_selected(_index: int) -> void:
+	var lang_code := _get_current_language_code()
+	var voices := _text_to_speech.get_voices(lang_code)
+
 	_voice_option_button.clear()
 
 	Log.i("voices: %d" % voices.size())
@@ -38,28 +68,3 @@ func _on_voices_ready(voices: Array[Voice]) -> void:
 		var text := "[%s] %s" % [voice.lang, voice.name]
 		_voice_option_button.add_item(text)
 		_voice_option_button.set_item_metadata(i, voice.voice_uri)
-		# Log.d("idx=%d, name=%s, lang=%s" % [voice.idx, voice.name, voice.lang])
-
-	# for voice in voices:
-	# 	var text := "[%s] %s" % [voice.lang, voice.name]
-	# 	_voice_option_button.add_item(text, voice.idx)
-	# 	Log.d("idx=%d, name=%s, lang=%s" % [voice.idx, voice.name, voice.lang])
-
-
-func _on_text_result_received(text: String) -> void:
-	_text_edit.text = text
-
-
-func _on_recognition_ended() -> void:
-	_on_text_to_speech_button_pressed()
-
-
-func _on_speech_to_text_button_pressed() -> void:
-	var lang_name := _language_option_button.text
-	var lang_code := Language.get_code_by_name(lang_name)
-	_speech_to_text.start(lang_code)
-
-
-func _on_text_to_speech_button_pressed() -> void:
-	var voice_uri: String = _voice_option_button.get_selected_metadata()
-	_text_to_speech.speak(_text_edit.text, voice_uri)
