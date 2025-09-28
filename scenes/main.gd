@@ -56,13 +56,6 @@ func _on_language_option_button_item_selected(_index: int) -> void:
 
 	Log.i("voices: %d" % voices.size())
 
-	voices.sort_custom(
-		func(a: Voice, b: Voice) -> bool:
-			if a.lang == b.lang:
-				return a.idx < b.idx
-			return a.lang < b.lang
-	)
-
 	for i in voices.size():
 		var voice := voices[i]
 		var text := "[%s] %s" % [voice.lang, voice.name]
