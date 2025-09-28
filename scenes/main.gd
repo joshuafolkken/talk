@@ -24,14 +24,14 @@ func _on_voices_ready(voices: Array[Voice]) -> void:
 	voices.sort_custom(
 		func(a: Voice, b: Voice) -> bool:
 			if a.lang == b.lang:
-				return a.id < b.id
+				return a.idx < b.idx
 			return a.lang < b.lang
 	)
 
 	for voice in voices:
 		var text := "[%s] %s" % [voice.lang, voice.name]
-		_voice_option_button.add_item(text, voice.id)
-		Log.d("id=%d, name=%s, lang=%s" % [voice.id, voice.name, voice.lang])
+		_voice_option_button.add_item(text, voice.idx)
+		Log.d("idx=%d, name=%s, lang=%s" % [voice.idx, voice.name, voice.lang])
 
 
 func _on_text_result_received(text: String) -> void:
@@ -43,8 +43,8 @@ func _on_recognition_ended() -> void:
 
 
 func _on_text_to_speech_button_pressed() -> void:
-	var voice_name := _voice_option_button.text.split("] ")[-1]
-	_text_to_speech.speak(_text_edit.text, voice_name)
+	var voice_idx := _voice_option_button.get_selected_id()
+	_text_to_speech.speak(_text_edit.text, voice_idx)
 
 
 func _on_speech_to_text_button_pressed() -> void:

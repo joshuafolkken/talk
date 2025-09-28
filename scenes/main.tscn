@@ -12,26 +12,35 @@ script = ExtResource("1_o5qli")
 offset_left = 19.0
 offset_top = 101.0
 offset_right = 520.0
-offset_bottom = 475.0
+offset_bottom = 712.0
 theme_override_font_sizes/font_size = 24
-text = "音声認識アプリの使い方
+text = "Hey there! Welcome to Talk App!
 
-1.  「Speech to Text」ボタンを押す
-話した内容が自動でテキストに変換されます
+このアプリの使い方
+※現在は PC/Mac の Chrome のみ対応
 
-2. 音声認識後
-認識されたテキストが自動で復唱されます
+1. 音声をテキストに
 
-3. テキストの編集
-表示されたテキストを自由に編集できます"
+「Speech to Text」ボタンを押す。
+マイクで話す。
+聞き取り内容が表示される。
+自動で音声が再生される。
+
+2. テキストを音声に
+
+文章を入力する。
+「Text to Speech」ボタンを押す。
+テキストが音声で再生される。
+
+Ready to get started? Let's talk!"
 wrap_mode = 1
 metadata/_edit_group_ = true
 
 [node name="TextToSpeechButton" type="Button" parent="CanvasLayer"]
 offset_left = 19.0
-offset_top = 537.0
+offset_top = 764.0
 offset_right = 518.0
-offset_bottom = 607.0
+offset_bottom = 834.0
 theme_override_font_sizes/font_size = 24
 text = "Text to Speech"
 metadata/_edit_group_ = true
@@ -47,9 +56,9 @@ metadata/_edit_group_ = true
 
 [node name="VoiceOptionButton" type="OptionButton" parent="CanvasLayer"]
 offset_left = 21.0
-offset_top = 488.0
-offset_right = 53.0
-offset_bottom = 508.0
+offset_top = 724.0
+offset_right = 113.0
+offset_bottom = 754.0
 theme_override_font_sizes/font_size = 20
 selected = 0
 item_count = 1

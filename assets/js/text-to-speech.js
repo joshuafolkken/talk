@@ -1,8 +1,6 @@
 class TextToSpeech {
   constructor() {
     this._voices = []
-    this._voice_list = []
-    this._voice_json = ''
     this._on_voices_ready = null
   }
 
@@ -14,35 +12,34 @@ class TextToSpeech {
   setup_voices() {
     this._voices = speechSynthesis.getVoices()
 
-    this._voices.forEach((voice, idx) => {
-      // console.log(`Voice ${idx}: name="${voice.name}", lang="${voice.lang}"`);
+    const voice_data = this._voices.map((voice, idx) => ({
+      idx: idx,
+      voice_uri: voice.voiceURI,
+      name: voice.name,
+      lang: voice.lang,
+      local_service: voice.localService,
+      default: voice.default,
+    }))
 
-      this._voice_list.push({
-        id: idx,
-        name: voice.name,
-        lang: voice.lang,
-      })
-    })
-
-    this._voice_json = JSON.stringify(this._voice_list)
-    this._on_voices_ready(this._voice_json)
+    const voice_json = JSON.stringify(voice_data)
+    this._on_voices_ready(voice_json)
 
     // console.log('voices: ' + this._voices.length)
   }
 
-  speak(text, voice_name) {
+  speak(text, voice_uri) {
     if (speechSynthesis.speaking) {
       speechSynthesis.cancel()
     }
 
     const utterance = new SpeechSynthesisUtterance(text)
     const selected_voice = this._voices.find(
-      (voice) => voice.name === voice_name
+      (voice) => voice.voiceURI === voice_uri
     )
     utterance.voice = selected_voice
     speechSynthesis.speak(utterance)
 
-    console.log('voice name: ' + voice_name)
+    console.log('voice name: ' + selected_voice.name)
     // console.log("Speaking text: ", text);
 
     // if (this._voices.length > 0) {

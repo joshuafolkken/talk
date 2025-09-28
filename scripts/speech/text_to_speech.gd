@@ -18,19 +18,21 @@ func _init() -> void:
 
 func _on_voices_ready(args: Array) -> void:
 	var voices_json: String = args[0]
-	# Log.d(voices_json)
-
 	var voices_data: Array = JSON.parse_string(voices_json)
 
+	_voices = []
 	for voice_data: Dictionary in voices_data:
-		var voice := Voice.new()
-		voice.id = voice_data.get("id", 0)
-		voice.name = voice_data.get("name", "")
-		voice.lang = voice_data.get("lang", "")
+		var voice := Voice.new(voice_data)
 		_voices.append(voice)
 
 	voices_ready.emit(_voices)
 
 
-func speak(text: String, voice_name: String) -> void:
-	_js.call("speak", text, voice_name)
+func speak(text: String, voice_idx: int) -> void:
+	var voice := _get_voice(voice_idx)
+	_js.call("speak", text, voice.voice_uri)
+
+
+func _get_voice(idx: int) -> Voice:
+	var index := _voices.find_custom(func(voice: Voice) -> bool: return voice.idx == idx)
+	return _voices[index]
