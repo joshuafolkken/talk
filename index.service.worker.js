@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1759079544|8619220';
+const CACHE_VERSION = '1759080553|8321850';
 /** @type {string} */
 const CACHE_PREFIX = 'Talk-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
