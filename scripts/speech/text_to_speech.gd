@@ -28,11 +28,5 @@ func _on_voices_ready(args: Array) -> void:
 	voices_ready.emit(_voices)
 
 
-func speak(text: String, voice_idx: int) -> void:
-	var voice := _get_voice(voice_idx)
-	_js.call("speak", text, voice.voice_uri)
-
-
-func _get_voice(idx: int) -> Voice:
-	var index := _voices.find_custom(func(voice: Voice) -> bool: return voice.idx == idx)
-	return _voices[index]
+func speak(text: String, voice_uri: String) -> void:
+	_js.call("speak", text, voice_uri)

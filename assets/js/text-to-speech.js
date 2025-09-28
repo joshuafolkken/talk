@@ -23,8 +23,6 @@ class TextToSpeech {
 
     const voice_json = JSON.stringify(voice_data)
     this._on_voices_ready(voice_json)
-
-    // console.log('voices: ' + this._voices.length)
   }
 
   speak(text, voice_uri) {
@@ -39,23 +37,8 @@ class TextToSpeech {
     utterance.voice = selected_voice
     speechSynthesis.speak(utterance)
 
-    console.log('voice name: ' + selected_voice.name)
+    // console.log('voice name: ' + selected_voice.name)
     // console.log("Speaking text: ", text);
-
-    // if (this._voices.length > 0) {
-    //   const japanese_voice = this._voices.find(
-    //     // (voice) => voice.name.includes('Google 日本語')
-    //     (voice) => voice.lang.includes('en')
-    //   )
-
-    //   if (japanese_voice) {
-    //     utterance.voice = japanese_voice
-    //     // console.log("Using Japanese voice: ", japanese_voice.name);
-    //   } else {
-    //     utterance.voice = this._voices[0]
-    //     // console.log("Using default voice: ", voices[0].name);
-    //   }
-    // }
   }
 }
 

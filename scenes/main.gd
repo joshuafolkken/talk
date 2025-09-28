@@ -4,6 +4,7 @@ var _text_to_speech: TextToSpeech
 var _speech_to_text: SpeechToText
 
 @onready var _text_edit: TextEdit = $CanvasLayer/TextEdit
+@onready var _language_option_button: OptionButton = $CanvasLayer/LanguageOptionButton
 @onready var _voice_option_button: OptionButton = $CanvasLayer/VoiceOptionButton
 
 
@@ -14,6 +15,10 @@ func _ready() -> void:
 	_speech_to_text = SpeechToText.new()
 	_speech_to_text.result_received.connect(_on_text_result_received)
 	_speech_to_text.recognition_ended.connect(_on_recognition_ended)
+
+	_language_option_button.clear()
+	for language in Language.get_languages():
+		_language_option_button.add_item(language.get_name())
 
 
 func _on_voices_ready(voices: Array[Voice]) -> void:
@@ -28,10 +33,17 @@ func _on_voices_ready(voices: Array[Voice]) -> void:
 			return a.lang < b.lang
 	)
 
-	for voice in voices:
+	for i in voices.size():
+		var voice := voices[i]
 		var text := "[%s] %s" % [voice.lang, voice.name]
-		_voice_option_button.add_item(text, voice.idx)
-		Log.d("idx=%d, name=%s, lang=%s" % [voice.idx, voice.name, voice.lang])
+		_voice_option_button.add_item(text)
+		_voice_option_button.set_item_metadata(i, voice.voice_uri)
+		# Log.d("idx=%d, name=%s, lang=%s" % [voice.idx, voice.name, voice.lang])
+
+	# for voice in voices:
+	# 	var text := "[%s] %s" % [voice.lang, voice.name]
+	# 	_voice_option_button.add_item(text, voice.idx)
+	# 	Log.d("idx=%d, name=%s, lang=%s" % [voice.idx, voice.name, voice.lang])
 
 
 func _on_text_result_received(text: String) -> void:
@@ -42,10 +54,12 @@ func _on_recognition_ended() -> void:
 	_on_text_to_speech_button_pressed()
 
 
-func _on_text_to_speech_button_pressed() -> void:
-	var voice_idx := _voice_option_button.get_selected_id()
-	_text_to_speech.speak(_text_edit.text, voice_idx)
-
-
 func _on_speech_to_text_button_pressed() -> void:
-	_speech_to_text.start()
+	var lang_name := _language_option_button.text
+	var lang_code := Language.get_code_by_name(lang_name)
+	_speech_to_text.start(lang_code)
+
+
+func _on_text_to_speech_button_pressed() -> void:
+	var voice_uri: String = _voice_option_button.get_selected_metadata()
+	_text_to_speech.speak(_text_edit.text, voice_uri)

@@ -26,5 +26,5 @@ func _on_end(_args: Array) -> void:
 	recognition_ended.emit()
 
 
-func start() -> void:
-	_js.call("start")
+func start(code: String) -> void:
+	_js.call("start", code)

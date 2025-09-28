@@ -10,9 +10,9 @@ script = ExtResource("1_o5qli")
 
 [node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
 offset_left = 19.0
-offset_top = 101.0
+offset_top = 178.0
 offset_right = 520.0
-offset_bottom = 712.0
+offset_bottom = 831.0
 theme_override_font_sizes/font_size = 24
 text = "Hey there! Welcome to Talk App!
 
@@ -38,31 +38,42 @@ metadata/_edit_group_ = true
 
 [node name="TextToSpeechButton" type="Button" parent="CanvasLayer"]
 offset_left = 19.0
-offset_top = 764.0
+offset_top = 841.0
 offset_right = 518.0
-offset_bottom = 834.0
+offset_bottom = 911.0
 theme_override_font_sizes/font_size = 24
 text = "Text to Speech"
 metadata/_edit_group_ = true
 
 [node name="SpeechToTextButton" type="Button" parent="CanvasLayer"]
 offset_left = 20.0
-offset_top = 21.0
+offset_top = 98.0
 offset_right = 519.0
-offset_bottom = 91.0
+offset_bottom = 168.0
 theme_override_font_sizes/font_size = 24
 text = "Speech to Text"
 metadata/_edit_group_ = true
 
 [node name="VoiceOptionButton" type="OptionButton" parent="CanvasLayer"]
 offset_left = 21.0
-offset_top = 724.0
+offset_top = 58.0
 offset_right = 113.0
-offset_bottom = 754.0
+offset_bottom = 88.0
 theme_override_font_sizes/font_size = 20
 selected = 0
 item_count = 1
-popup/item_0/text = "テスト"
+popup/item_0/text = "Voices"
+popup/item_0/id = 0
+
+[node name="LanguageOptionButton" type="OptionButton" parent="CanvasLayer"]
+offset_left = 21.0
+offset_top = 18.0
+offset_right = 113.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 20
+selected = 0
+item_count = 1
+popup/item_0/text = "Languages"
 popup/item_0/id = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
