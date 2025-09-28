@@ -1,7 +1,7 @@
 class_name TextToSpeech
 extends Node
 
-signal voices_ready(voices: Array[Voice])
+signal voices_ready
 
 const FILE_NAME = "text-to-speech.js"
 
@@ -25,8 +25,12 @@ func _on_voices_ready(args: Array) -> void:
 		var voice := Voice.new(voice_data)
 		_voices.append(voice)
 
-	voices_ready.emit(_voices)
+	voices_ready.emit()
 
 
 func speak(text: String, voice_uri: String) -> void:
 	_js.call("speak", text, voice_uri)
+
+
+func get_voices(lang_code: String) -> Array[Voice]:
+	return _voices.filter(func(voice: Voice) -> bool: return voice.lang == lang_code)

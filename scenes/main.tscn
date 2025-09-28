@@ -87,3 +87,4 @@ theme_override_constants/margin_bottom = 20
 [connection signal="button_down" from="CanvasLayer/TextToSpeechButton" to="." method="_on_button_button_down"]
 [connection signal="pressed" from="CanvasLayer/TextToSpeechButton" to="." method="_on_text_to_speech_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SpeechToTextButton" to="." method="_on_speech_to_text_button_pressed"]
+[connection signal="item_selected" from="CanvasLayer/LanguageOptionButton" to="." method="_on_language_option_button_item_selected"]
