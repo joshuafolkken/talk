@@ -33,4 +33,13 @@ func speak(text: String, voice_uri: String) -> void:
 
 
 func get_voices(lang_code: String) -> Array[Voice]:
-	return _voices.filter(func(voice: Voice) -> bool: return voice.lang == lang_code)
+	var voices := _voices.filter(func(voice: Voice) -> bool: return voice.lang == lang_code)
+
+	voices.sort_custom(
+		func(a: Voice, b: Voice) -> bool:
+			if a.local_service != b.local_service:
+				return int(a.local_service) < int(b.local_service)
+			return a.idx < b.idx
+	)
+
+	return voices
