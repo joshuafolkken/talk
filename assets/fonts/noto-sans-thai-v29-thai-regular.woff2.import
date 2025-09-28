@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://d0luqrsi4o1lw"
-path="res://.godot/imported/PixelMplus12-Regular.ttf-d7b422da2fd785c41a53999d5dca0575.fontdata"
+uid="uid://by1hxsstlq87g"
+path="res://.godot/imported/noto-sans-thai-v29-thai-regular.woff2-30e8988ffbe194232f81d33ce0b17c79.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/PixelMplus12-Regular.ttf"
-dest_files=["res://.godot/imported/PixelMplus12-Regular.ttf-d7b422da2fd785c41a53999d5dca0575.fontdata"]
+source_file="res://assets/fonts/noto-sans-thai-v29-thai-regular.woff2"
+dest_files=["res://.godot/imported/noto-sans-thai-v29-thai-regular.woff2-30e8988ffbe194232f81d33ce0b17c79.fontdata"]
 
 [params]
 
