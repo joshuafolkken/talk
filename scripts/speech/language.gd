@@ -15,7 +15,7 @@ const LANGUAGE_DATA: Array[Array] = [
 	["fr-FR", "Français (France)"],
 	["fr-CA", "Français (Canada)"],
 	["de-DE", "Deutsch (Deutschland)"],
-	["ja-JP", "日本語 (日本)"],
+	["ja-JP", "日本語"],
 	["ko-KR", "한국어"],
 	["it-IT", "Italiano"],
 	["zh-CN", "中文 (中国)"],

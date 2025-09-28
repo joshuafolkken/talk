@@ -48,6 +48,23 @@ func _on_text_to_speech_button_pressed() -> void:
 	_text_to_speech.speak(_text_edit.text, voice_uri)
 
 
+func _shorten_name(name: String) -> String:
+	var paren_index := name.find(" (")
+
+	if paren_index != -1:
+		return name.substr(0, paren_index)
+
+	if name.find("Google") != -1:
+		if name.find("Female") != -1:
+			return "Google Female"
+		if name.find("Male") != -1:
+			return "Google Male"
+
+		return "Google"
+
+	return name
+
+
 func _on_language_option_button_item_selected(_index: int) -> void:
 	var lang_code := _get_current_language_code()
 	var voices := _text_to_speech.get_voices(lang_code)
@@ -58,6 +75,6 @@ func _on_language_option_button_item_selected(_index: int) -> void:
 
 	for i in voices.size():
 		var voice := voices[i]
-		var text := "[%s] %s" % [voice.lang, voice.name]
+		var text := _shorten_name(voice.name)
 		_voice_option_button.add_item(text)
 		_voice_option_button.set_item_metadata(i, voice.voice_uri)
