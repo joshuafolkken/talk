@@ -23,6 +23,8 @@ class TextToSpeech {
 
     const voice_json = JSON.stringify(voice_data)
     this._on_voices_ready(voice_json)
+
+    speechSynthesis.onvoiceschanged = null
   }
 
   speak(text, voice_uri) {
