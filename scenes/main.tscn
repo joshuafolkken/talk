@@ -10,18 +10,17 @@ script = ExtResource("1_o5qli")
 
 [node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
 offset_left = 21.0
-offset_top = 155.0
+offset_top = 214.0
 offset_right = 522.0
-offset_bottom = 861.0
+offset_bottom = 864.0
 theme_override_font_sizes/font_size = 24
 text = "Hey there! Welcome to Talk App!
 
-このアプリの使い方
-※現在は PC/Mac の Chrome のみ対応
+1.「Speech to Text」
+マイクで話すとテキストに変換されます。その後、自動で音声が再生されます。
 
-「Speech to Text」ボタンを押し、マイクで話すとテキストに変換されます。その後、自動で音声が再生されます。
-
-「Text to Speech」ボタンを押すと、入力した文章を音声で読み上げます。
+2.「Text to Speech」
+入力した文章を音声で読み上げます。
 
 Ready to get started? Let's talk!"
 wrap_mode = 1
@@ -30,7 +29,7 @@ metadata/_edit_group_ = true
 [node name="TextToSpeechButton" type="Button" parent="CanvasLayer"]
 offset_left = 21.0
 offset_top = 872.0
-offset_right = 520.0
+offset_right = 522.0
 offset_bottom = 942.0
 theme_override_font_sizes/font_size = 24
 text = "Text to Speech"
@@ -38,29 +37,29 @@ metadata/_edit_group_ = true
 
 [node name="SpeechToTextButton" type="Button" parent="CanvasLayer"]
 offset_left = 21.0
-offset_top = 71.0
-offset_right = 520.0
-offset_bottom = 141.0
+offset_top = 137.0
+offset_right = 521.0
+offset_bottom = 207.0
 theme_override_font_sizes/font_size = 24
 text = "Speech to Text"
 metadata/_edit_group_ = true
 
 [node name="VoiceOptionButton" type="OptionButton" parent="CanvasLayer"]
-offset_left = 347.0
-offset_top = 18.0
-offset_right = 520.0
-offset_bottom = 57.0
+offset_left = 21.0
+offset_top = 77.0
+offset_right = 521.0
+offset_bottom = 128.0
 theme_override_font_sizes/font_size = 20
 selected = 0
 fit_to_longest_item = false
 item_count = 1
-popup/item_0/text = "Google Female"
+popup/item_0/text = "Microsoft Haruka ssssss"
 popup/item_0/id = 0
 
 [node name="LanguageOptionButton" type="OptionButton" parent="CanvasLayer"]
 offset_left = 21.0
 offset_top = 18.0
-offset_right = 332.0
+offset_right = 521.0
 offset_bottom = 57.0
 theme_override_font_sizes/font_size = 20
 selected = 0
