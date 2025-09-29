@@ -16,12 +16,12 @@ func _ready() -> void:
 	_speech_to_text.result_received.connect(_on_text_result_received)
 	_speech_to_text.recognition_ended.connect(_on_recognition_ended)
 
+
+func _on_voices_ready(lang_codes: Dictionary[String, bool]) -> void:
 	_language_option_button.clear()
-	for language in Language.get_languages():
+	for language in Language.get_languages(lang_codes):
 		_language_option_button.add_item(language.get_name())
 
-
-func _on_voices_ready() -> void:
 	_on_language_option_button_item_selected(-1)
 
 
@@ -48,33 +48,15 @@ func _on_text_to_speech_button_pressed() -> void:
 	_text_to_speech.speak(_text_edit.text, voice_uri)
 
 
-func _shorten_name(name: String) -> String:
-	var paren_index := name.find(" (")
-
-	if paren_index != -1:
-		return name.substr(0, paren_index)
-
-	if name.find("Google") != -1:
-		if name.find("Female") != -1:
-			return "Google Female"
-		if name.find("Male") != -1:
-			return "Google Male"
-
-		return "Google"
-
-	return name
-
-
 func _on_language_option_button_item_selected(_index: int) -> void:
 	var lang_code := _get_current_language_code()
 	var voices := _text_to_speech.get_voices(lang_code)
 
 	_voice_option_button.clear()
 
-	Log.i("voices: %d" % voices.size())
+	# Log.d("voices count by lang code: %s: %d" % [lang_code, voices.size()])
 
 	for i in voices.size():
 		var voice := voices[i]
-		var text := _shorten_name(voice.name)
-		_voice_option_button.add_item(text)
+		_voice_option_button.add_item(voice.get_short_name())
 		_voice_option_button.set_item_metadata(i, voice.voice_uri)

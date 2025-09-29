@@ -1,91 +1,158 @@
 class_name Language
 
 const LANGUAGE_DATA: Array[Array] = [
-	# 主要学習言語（学習人気順）
+	# トップ20言語（使用人口順）
 	["en-US", "English (United States)"],
 	["en-GB", "English (United Kingdom)"],
 	["en-AU", "English (Australia)"],
-	# ["en-CA", "English (Canada)"],
+	["en-CA", "English (Canada)"],
 	["en-IE", "English (Ireland)"],
 	["en-IN", "English (India)"],
 	["en-ZA", "English (South Africa)"],
+	["en-HK", "English (Hong Kong)"],
+	["en-KE", "English (Kenya)"],
+	["en-NG", "English (Nigeria)"],
+	["en-NZ", "English (New Zealand)"],
+	["en-PH", "English (Philippines)"],
+	["en-SG", "English (Singapore)"],
+	["en-TZ", "English (Tanzania)"],
 	["es-ES", "Español (España)"],
-	["es-MX", "Español (México)"],
 	["es-US", "Español (Estados Unidos)"],
+	["es-MX", "Español (México)"],
+	["es-AR", "Español (Argentina)"],
+	["es-BO", "Español (Bolivia)"],
+	["es-CL", "Español (Chile)"],
+	["es-CO", "Español (Colombia)"],
+	["es-CR", "Español (Costa Rica)"],
+	["es-CU", "Español (Cuba)"],
+	["es-DO", "Español (República Dominicana)"],
+	["es-EC", "Español (Ecuador)"],
+	["es-SV", "Español (El Salvador)"],
+	["es-GQ", "Español (Guinea Ecuatorial)"],
+	["es-GT", "Español (Guatemala)"],
+	["es-HN", "Español (Honduras)"],
+	["es-NI", "Español (Nicaragua)"],
+	["es-PA", "Español (Panamá)"],
+	["es-PY", "Español (Paraguay)"],
+	["es-PE", "Español (Perú)"],
+	["es-PR", "Español (Puerto Rico)"],
+	["es-UY", "Español (Uruguay)"],
+	["es-VE", "Español (Venezuela)"],
 	["fr-FR", "Français (France)"],
 	["fr-CA", "Français (Canada)"],
+	["fr-BE", "Français (Belgique)"],
+	["fr-CH", "Français (Suisse)"],
 	["de-DE", "Deutsch (Deutschland)"],
+	["de-AT", "Deutsch (Österreich)"],
+	["de-CH", "Deutsch (Schweiz)"],
 	["ja-JP", "日本語"],
-	["ko-KR", "한국어"],
 	["it-IT", "Italiano"],
+	["ko-KR", "한국어"],
 	["zh-CN", "中文 (中国)"],
+	["zh-CN-liaoning", "中文 (中国遼寧省)"],
+	["zh-CN-shaanxi", "中文 (中国陝西省)"],
 	["zh-TW", "中文 (台灣)"],
 	["zh-HK", "中文 (香港)"],
 	["pt-BR", "Português (Brasil)"],
 	["pt-PT", "Português (Portugal)"],
-	["ru-RU", "Русский"],
-	# ["ar-SA", "العربية (السعودية)"],  # 音声が利用できない（ar-001のみ利用可能）
 	["hi-IN", "हिन्दी"],
-	# その他の人気言語
-	["th-TH", "ไทย"],
-	["vi-VN", "Tiếng Việt"],
+	["ru-RU", "Русский"],
+	["ar-SA", "العربية (السعودية)"],
+	["ar-AE", "العربية (الإمارات العربية المتحدة)"],
+	["ar-BH", "العربية (البحرين)"],
+	["ar-DZ", "العربية (الجزائر)"],
+	["ar-EG", "العربية (مصر)"],
+	["ar-IQ", "العربية (العراق)"],
+	["ar-JO", "العربية (الأردن)"],
+	["ar-KW", "العربية (الكويت)"],
+	["ar-LB", "العربية (لبنان)"],
+	["ar-LY", "العربية (ليبيا)"],
+	["ar-MA", "العربية (المغرب)"],
+	["ar-OM", "العربية (عُمان)"],
+	["ar-QA", "العربية (قطر)"],
+	["ar-SY", "العربية (سوريا)"],
+	["ar-TN", "العربية (تونس)"],
+	["ar-YE", "العربية (اليمن)"],
+	["sv-SE", "Svenska"],
 	["tr-TR", "Türkçe"],
+	["vi-VN", "Tiếng Việt"],
+	["ro-RO", "Română"],
+	["ta-IN", "தமிழ்"],
+	["ta-MY", "தமிழ் (மலேசியா)"],
+	["ta-SG", "தமிழ் (சிங்கப்பூர்)"],
+	["ta-LK", "தமிழ் (இலங்கை)"],
+	["ur-PK", "اردو"],
+	["ur-IN", "اردو (بھارت)"],
+	["bn-BD", "বাংলা"],
+	["pl-PL", "Polski"],
+	# Google サポート
 	["nl-NL", "Nederlands"],
 	["nl-BE", "Nederlands (België)"],
-	["sv-SE", "Svenska"],
-	["ms-MY", "Bahasa Melayu"],
-	["nb-NO", "Norsk (Bokmål)"],
-	# ["no-NO", "Norsk"],  # 音声が利用できない（nb-NOのみ利用可能）
-	["da-DK", "Dansk"],
-	["fi-FI", "Suomi"],
-	["pl-PL", "Polski"],
-	["cs-CZ", "Čeština"],
+	["id-ID", "Bahasa Indonesia"],
+	# Microsoft サポート
+	["az-AZ", "Azərbaycan"],
+	["fil-PH", "Filipino"],
+	["gl-ES", "Galego"],
+	["ka-GE", "ქართული"],
+	["el-GR", "Ελληνικά"],
+	["gu-IN", "ગુજરાતી"],
+	["he-IL", "עברית"],
 	["hu-HU", "Magyar"],
-	["ro-RO", "Română"],
+	["is-IS", "Íslenska"],
+	["iu-Cans-CA", "ᐃᓄᒃᑎᑐᑦ (ᑲᓇᑕ)"],
+	["iu-Latn-CA", "Inuktitut (Canada)"],
+	["ga-IE", "Gaeilge"],
+	["jv-ID", "Basa Jawa"],
+	["kn-IN", "ಕನ್ನಡ"],
+	["kk-KZ", "Қазақ"],
+	["km-KH", "ខ្មែរ"],
+	["lo-LA", "ລາວ"],
+	["lv-LV", "Latviešu"],
+	["lt-LT", "Lietuvių"],
+	["mk-MK", "Македонски"],
+	["ms-MY", "Bahasa Melayu"],
+	["ml-IN", "മലയാളം"],
+	["mt-MT", "Malti"],
+	["mr-IN", "मराठी"],
+	["mn-MN", "Монгол"],
+	["my-MM", "မြန်မာ"],
+	["ne-NP", "नेपाली"],
+	["nb-NO", "Norsk (Bokmål)"],
+	["ps-AF", "پښتو"],
+	["fa-IR", "فارسی"],
+	["so-SO", "Soomaali"],
+	["su-ID", "Basa Sunda"],
+	["sw-TZ", "Kiswahili (Tanzania)"],
+	["sw-KE", "Kiswahili"],
+	["te-IN", "తెలుగు"],
+	["th-TH", "ไทย"],
+	["uk-UA", "Українська"],
+	["uz-UZ", "O'zbek"],
+	["cy-GB", "Cymraeg"],
+	["zu-ZA", "IsiZulu"],
+	# その他の人気言語
+	["af-ZA", "Afrikaans"],
+	["am-ET", "አማርኛ"],
+	["as-IN", "অসমীয়া"],
 	["bg-BG", "Български"],
+	["bs-BA", "Bosanski"],
+	["ca-ES", "Català"],
+	["cs-CZ", "Čeština"],
+	["da-DK", "Dansk"],
+	["et-EE", "Eesti"],
+	["eu-ES", "Euskera"],
+	["fi-FI", "Suomi"],
 	["hr-HR", "Hrvatski"],
+	["lb-LU", "Lëtzebuergesch"],
+	["no-NO", "Norsk (Nynorsk)"],
+	["or-IN", "ଓଡ଼ିଆ"],
+	["pa-IN", "ਪੰਜਾਬੀ"],
+	["rm-CH", "Rumantsch"],
+	["si-LK", "සිංහල"],
 	["sk-SK", "Slovenčina"],
 	["sl-SI", "Slovenščina"],
-	# ["et-EE", "Eesti"],
-	# ["lv-LV", "Latviešu"],
-	# ["lt-LT", "Lietuvių"],
-	["el-GR", "Ελληνικά"],
-	["uk-UA", "Українська"],
-	# ["bn-BD", "বাংলা"],
-	["ta-IN", "தமிழ்"],
-	# ["te-IN", "తెలుగు"],
-	# ["ml-IN", "മലയാളം"],
-	# ["kn-IN", "ಕನ್ನಡ"],
-	# ["gu-IN", "ગુજરાતી"],
-	# ["pa-IN", "ਪੰਜਾਬੀ"],
-	# ["or-IN", "ଓଡ଼ିଆ"],
-	# ["as-IN", "অসমীয়া"],
-	# ["ne-NP", "नेपाली"],
-	# ["si-LK", "සිංහල"],
-	# ["my-MM", "မြန်မာ"],
-	# ["km-KH", "ខ្មែរ"],
-	# ["lo-LA", "ລາວ"],
-	# ["ka-GE", "ქართული"],
-	# ["am-ET", "አማርኛ"],
-	["he-IL", "עברית"],
-	# ["fa-IR", "فارسی"],
-	# ["ur-PK", "اردو"],
-	# ["sw-KE", "Kiswahili"],
-	# ["zu-ZA", "IsiZulu"],
-	# ["af-ZA", "Afrikaans"],
-	# ["is-IS", "Íslenska"],
-	# ["ga-IE", "Gaeilge"],
-	# ["cy-GB", "Cymraeg"],
-	# ["mt-MT", "Malti"],
-	# ["eu-ES", "Euskera"],
-	["ca-ES", "Català"],
-	# ["gl-ES", "Galego"],
-	# ["lb-LU", "Lëtzebuergesch"],
-	# ["rm-CH", "Rumantsch"],
-	# ["sq-AL", "Shqip"],
-	# ["mk-MK", "Македонски"],
-	# ["sr-RS", "Српски"],
-	# ["bs-BA", "Bosanski"],
+	["sq-AL", "Shqip"],
+	["sr-RS", "Српски"],
 ]
 
 static var _cached_languages: Array[Language] = []
@@ -108,28 +175,25 @@ func get_name() -> String:
 	return _name
 
 
-static func _initialize() -> void:
+static func get_languages(lang_codes: Dictionary[String, bool]) -> Array[Language]:
+	_cached_languages = []
+	_language_by_name = {}
+
 	for language_data in LANGUAGE_DATA:
-		var code: String = language_data[0]
-		var name: String = language_data[1]
-		var language := Language.new(code, name)
+		var lang_code: String = language_data[0]
+		if not lang_codes.has(lang_code):
+			continue
+
+		var lang_name: String = language_data[1]
+		var language := Language.new(lang_code, lang_name)
 
 		_cached_languages.append(language)
-		_language_by_name[name] = language
+		_language_by_name[lang_name] = language
 
-
-static func _ensure_initialized() -> void:
-	if _cached_languages.is_empty():
-		_initialize()
-
-
-static func get_languages() -> Array[Language]:
-	_ensure_initialized()
 	return _cached_languages.duplicate()
 
 
 static func find_by_name(name: String) -> Language:
-	_ensure_initialized()
 	return _language_by_name.get(name)
 
 

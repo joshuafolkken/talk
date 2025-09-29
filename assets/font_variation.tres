@@ -1,4 +1,4 @@
-[gd_resource type="FontVariation" load_steps=10 format=3 uid="uid://cxo4okkefoebx"]
+[gd_resource type="FontVariation" load_steps=11 format=3 uid="uid://cxo4okkefoebx"]
 
 [ext_resource type="FontFile" uid="uid://dvjkw2vt0b3yn" path="res://assets/fonts/noto-sans-v42-cyrillic_cyrillic-ext_devanagari_greek_greek-ext_latin_latin-ext_vietnamese-regular.woff2" id="1_xxsvt"]
 [ext_resource type="FontFile" uid="uid://bs4ar5pafu2sc" path="res://assets/fonts/noto-sans-jp-v55-japanese-regular.woff2" id="2_n2hlc"]
@@ -9,9 +9,10 @@
 [ext_resource type="FontFile" uid="uid://cihuemcnu8e0m" path="res://assets/fonts/noto-sans-sc-v39-chinese-simplified-regular.woff2" id="5_mkew4"]
 [ext_resource type="FontFile" uid="uid://bagu5jbdjdb3e" path="res://assets/fonts/noto-sans-hk-v34-chinese-hongkong-regular.woff2" id="6_87c7d"]
 [ext_resource type="FontFile" uid="uid://d1k0kl8jjn1py" path="res://assets/fonts/noto-sans-hebrew-v50-hebrew-regular.woff2" id="6_ms6im"]
+[ext_resource type="FontFile" uid="uid://bpxwniwvlkq4c" path="res://assets/fonts/noto-sans-arabic-v33-arabic_math_symbols-regular.woff2" id="10_mkew4"]
 
 [resource]
-fallbacks = Array[Font]([ExtResource("2_n2hlc"), ExtResource("2_xxsvt"), ExtResource("4_08wjf"), ExtResource("5_mkew4"), ExtResource("6_87c7d"), ExtResource("4_n2hlc"), ExtResource("5_3jgmm"), ExtResource("6_ms6im")])
+fallbacks = Array[Font]([ExtResource("2_n2hlc"), ExtResource("2_xxsvt"), ExtResource("4_08wjf"), ExtResource("5_mkew4"), ExtResource("6_87c7d"), ExtResource("4_n2hlc"), ExtResource("5_3jgmm"), ExtResource("6_ms6im"), ExtResource("10_mkew4")])
 base_font = ExtResource("1_xxsvt")
 opentype_features = {
 1667329140: 0
