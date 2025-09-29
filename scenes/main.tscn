@@ -56,7 +56,7 @@ item_count = 1
 popup/item_0/text = "Microsoft Haruka ssssss"
 popup/item_0/id = 0
 
-[node name="LanguageOptionButton" type="OptionButton" parent="CanvasLayer"]
+[node name="LocaleOptionButton" type="OptionButton" parent="CanvasLayer"]
 offset_left = 21.0
 offset_top = 18.0
 offset_right = 521.0
@@ -78,4 +78,4 @@ theme_override_constants/margin_bottom = 20
 [connection signal="button_down" from="CanvasLayer/TextToSpeechButton" to="." method="_on_button_button_down"]
 [connection signal="pressed" from="CanvasLayer/TextToSpeechButton" to="." method="_on_text_to_speech_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SpeechToTextButton" to="." method="_on_speech_to_text_button_pressed"]
-[connection signal="item_selected" from="CanvasLayer/LanguageOptionButton" to="." method="_on_language_option_button_item_selected"]
+[connection signal="item_selected" from="CanvasLayer/LocaleOptionButton" to="." method="_on_locale_option_button_item_selected"]

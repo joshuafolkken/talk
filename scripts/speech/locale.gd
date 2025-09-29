@@ -1,7 +1,7 @@
-class_name Language
+class_name Locale
 
 const SEPARATOR_CODE: String = "-----"
-const LANGUAGE_DATA: Array[Array] = [
+const LOCALE_DATA: Array[Array] = [
 	# Top 20 languages (by population)
 	["en-US", "English (United States)"],
 	["en-GB", "English (United Kingdom)"],
@@ -155,8 +155,8 @@ const LANGUAGE_DATA: Array[Array] = [
 	["zu-ZA", "IsiZulu"],
 ]
 
-static var _cached_languages: Array[Language] = []
-static var _language_by_name: Dictionary[String, Language] = {}
+static var _cached_locale: Array[Locale] = []
+static var _locale_by_name: Dictionary[String, Locale] = {}
 
 var _code := ""
 var _name := ""
@@ -186,27 +186,27 @@ func is_separator() -> bool:
 	return _code == SEPARATOR_CODE
 
 
-static func get_languages(lang_codes: Dictionary[String, bool]) -> Array[Language]:
-	_cached_languages = []
-	_language_by_name = {}
+static func get_locales(locale_codes: Dictionary[String, bool]) -> Array[Locale]:
+	_cached_locale = []
+	_locale_by_name = {}
 
-	for language_data in LANGUAGE_DATA:
-		var lang_code: String = language_data[0]
-		var lang_name: String = language_data[1]
-		var language := Language.new(lang_code, lang_name)
+	for locale_data in LOCALE_DATA:
+		var locale_code: String = locale_data[0]
+		var locale_name: String = locale_data[1]
+		var locale := Locale.new(locale_code, locale_name)
 
-		if not language.is_separator():
-			if not lang_codes.has(lang_code):
+		if not locale.is_separator():
+			if not locale_codes.has(locale_code):
 				continue
 
-		_cached_languages.append(language)
-		_language_by_name[lang_name] = language
+		_cached_locale.append(locale)
+		_locale_by_name[locale_name] = locale
 
-	return _cached_languages.duplicate()
+	return _cached_locale.duplicate()
 
 
-static func find_by_name(name: String) -> Language:
-	return _language_by_name.get(name)
+static func find_by_name(name: String) -> Locale:
+	return _locale_by_name.get(name)
 
 
 static func get_code_by_name(name: String) -> String:
@@ -215,5 +215,5 @@ static func get_code_by_name(name: String) -> String:
 	if start != -1 and end != -1:
 		return name.substr(start + 1, end - start - 1)
 
-	var language := find_by_name(name)
-	return language._code
+	var locale := find_by_name(name)
+	return locale._code
