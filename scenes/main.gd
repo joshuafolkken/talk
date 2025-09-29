@@ -20,7 +20,11 @@ func _ready() -> void:
 func _on_voices_ready(lang_codes: Dictionary[String, bool]) -> void:
 	_language_option_button.clear()
 	for language in Language.get_languages(lang_codes):
-		_language_option_button.add_item(language.get_name())
+		if language.is_separator():
+			_language_option_button.add_separator()
+			continue
+
+		_language_option_button.add_item(language.get_formatted_name())
 
 	_on_language_option_button_item_selected(-1)
 
@@ -34,8 +38,7 @@ func _on_recognition_ended() -> void:
 
 
 func _get_current_language_code() -> String:
-	var lang_name := _language_option_button.text
-	return Language.get_code_by_name(lang_name)
+	return Language.get_code_by_name(_language_option_button.text)
 
 
 func _on_speech_to_text_button_pressed() -> void:

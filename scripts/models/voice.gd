@@ -19,7 +19,7 @@ func _init(data: Dictionary) -> void:
 
 func get_short_name() -> String:
 	if name.find("Microsoft") != -1:
-		return name.split(" - ")[0].replace(" (Natural)", "")
+		return name.split(" - ")[0]
 
 	if name.find(" (") != -1:
 		return name.split(" (")[0]

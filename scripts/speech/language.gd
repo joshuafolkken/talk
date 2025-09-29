@@ -1,7 +1,8 @@
 class_name Language
 
+const SEPARATOR_CODE: String = "-----"
 const LANGUAGE_DATA: Array[Array] = [
-	# トップ20言語（使用人口順）
+	# Top 20 languages (by population)
 	["en-US", "English (United States)"],
 	["en-GB", "English (United Kingdom)"],
 	["en-AU", "English (Australia)"],
@@ -85,74 +86,73 @@ const LANGUAGE_DATA: Array[Array] = [
 	["ur-IN", "اردو (بھارت)"],
 	["bn-BD", "বাংলা"],
 	["pl-PL", "Polski"],
-	# Google サポート
-	["nl-NL", "Nederlands"],
-	["nl-BE", "Nederlands (België)"],
-	["id-ID", "Bahasa Indonesia"],
-	# Microsoft サポート
-	["az-AZ", "Azərbaycan"],
-	["fil-PH", "Filipino"],
-	["gl-ES", "Galego"],
-	["ka-GE", "ქართული"],
-	["el-GR", "Ελληνικά"],
-	["gu-IN", "ગુજરાતી"],
-	["he-IL", "עברית"],
-	["hu-HU", "Magyar"],
-	["is-IS", "Íslenska"],
-	["iu-Cans-CA", "ᐃᓄᒃᑎᑐᑦ (ᑲᓇᑕ)"],
-	["iu-Latn-CA", "Inuktitut (Canada)"],
-	["ga-IE", "Gaeilge"],
-	["jv-ID", "Basa Jawa"],
-	["kn-IN", "ಕನ್ನಡ"],
-	["kk-KZ", "Қазақ"],
-	["km-KH", "ខ្មែរ"],
-	["lo-LA", "ລາວ"],
-	["lv-LV", "Latviešu"],
-	["lt-LT", "Lietuvių"],
-	["mk-MK", "Македонски"],
-	["ms-MY", "Bahasa Melayu"],
-	["ml-IN", "മലയാളം"],
-	["mt-MT", "Malti"],
-	["mr-IN", "मराठी"],
-	["mn-MN", "Монгол"],
-	["my-MM", "မြန်မာ"],
-	["ne-NP", "नेपाली"],
-	["nb-NO", "Norsk (Bokmål)"],
-	["ps-AF", "پښتو"],
-	["fa-IR", "فارسی"],
-	["so-SO", "Soomaali"],
-	["su-ID", "Basa Sunda"],
-	["sw-TZ", "Kiswahili (Tanzania)"],
-	["sw-KE", "Kiswahili"],
-	["te-IN", "తెలుగు"],
-	["th-TH", "ไทย"],
-	["uk-UA", "Українська"],
-	["uz-UZ", "O'zbek"],
-	["cy-GB", "Cymraeg"],
-	["zu-ZA", "IsiZulu"],
-	# その他の人気言語
+	# Others
+	[SEPARATOR_CODE, SEPARATOR_CODE],
 	["af-ZA", "Afrikaans"],
 	["am-ET", "አማርኛ"],
 	["as-IN", "অসমীয়া"],
+	["az-AZ", "Azərbaycan"],
 	["bg-BG", "Български"],
 	["bs-BA", "Bosanski"],
 	["ca-ES", "Català"],
 	["cs-CZ", "Čeština"],
+	["cy-GB", "Cymraeg"],
 	["da-DK", "Dansk"],
+	["el-GR", "Ελληνικά"],
 	["et-EE", "Eesti"],
 	["eu-ES", "Euskera"],
+	["fa-IR", "فارسی"],
 	["fi-FI", "Suomi"],
+	["fil-PH", "Filipino"],
+	["ga-IE", "Gaeilge"],
+	["gl-ES", "Galego"],
+	["gu-IN", "ગુજરાતી"],
+	["he-IL", "עברית"],
 	["hr-HR", "Hrvatski"],
+	["hu-HU", "Magyar"],
+	["id-ID", "Bahasa Indonesia"],
+	["is-IS", "Íslenska"],
+	["iu-Cans-CA", "ᐃᓄᒃᑎᑐᑦ (ᑲᓇᑕ)"],
+	["iu-Latn-CA", "Inuktitut (Canada)"],
+	["jv-ID", "Basa Jawa"],
+	["ka-GE", "ქართული"],
+	["kk-KZ", "Қазақ"],
+	["km-KH", "ខ្មែរ"],
+	["kn-IN", "ಕನ್ನಡ"],
 	["lb-LU", "Lëtzebuergesch"],
+	["lo-LA", "ລາວ"],
+	["lt-LT", "Lietuvių"],
+	["lv-LV", "Latviešu"],
+	["mk-MK", "Македонски"],
+	["ml-IN", "മലയാളം"],
+	["mn-MN", "Монгол"],
+	["mr-IN", "मराठी"],
+	["ms-MY", "Bahasa Melayu"],
+	["mt-MT", "Malti"],
+	["my-MM", "မြန်မာ"],
+	["nb-NO", "Norsk (Bokmål)"],
+	["ne-NP", "नेपाली"],
+	["nl-BE", "Nederlands (België)"],
+	["nl-NL", "Nederlands"],
 	["no-NO", "Norsk (Nynorsk)"],
 	["or-IN", "ଓଡ଼ିଆ"],
 	["pa-IN", "ਪੰਜਾਬੀ"],
+	["ps-AF", "پښتو"],
 	["rm-CH", "Rumantsch"],
 	["si-LK", "සිංහල"],
 	["sk-SK", "Slovenčina"],
 	["sl-SI", "Slovenščina"],
+	["so-SO", "Soomaali"],
 	["sq-AL", "Shqip"],
 	["sr-RS", "Српски"],
+	["su-ID", "Basa Sunda"],
+	["sw-KE", "Kiswahili"],
+	["sw-TZ", "Kiswahili (Tanzania)"],
+	["te-IN", "తెలుగు"],
+	["th-TH", "ไทย"],
+	["uk-UA", "Українська"],
+	["uz-UZ", "O'zbek"],
+	["zu-ZA", "IsiZulu"],
 ]
 
 static var _cached_languages: Array[Language] = []
@@ -175,17 +175,29 @@ func get_name() -> String:
 	return _name
 
 
+func get_formatted_name() -> String:
+	if is_separator():
+		return _name
+
+	return "[%s] %s" % [_code, _name]
+
+
+func is_separator() -> bool:
+	return _code == SEPARATOR_CODE
+
+
 static func get_languages(lang_codes: Dictionary[String, bool]) -> Array[Language]:
 	_cached_languages = []
 	_language_by_name = {}
 
 	for language_data in LANGUAGE_DATA:
 		var lang_code: String = language_data[0]
-		if not lang_codes.has(lang_code):
-			continue
-
 		var lang_name: String = language_data[1]
 		var language := Language.new(lang_code, lang_name)
+
+		if not language.is_separator():
+			if not lang_codes.has(lang_code):
+				continue
 
 		_cached_languages.append(language)
 		_language_by_name[lang_name] = language
@@ -198,5 +210,10 @@ static func find_by_name(name: String) -> Language:
 
 
 static func get_code_by_name(name: String) -> String:
+	var start := name.find("[")
+	var end := name.find("]", start)
+	if start != -1 and end != -1:
+		return name.substr(start + 1, end - start - 1)
+
 	var language := find_by_name(name)
 	return language._code

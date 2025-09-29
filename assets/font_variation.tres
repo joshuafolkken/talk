@@ -1,4 +1,4 @@
-[gd_resource type="FontVariation" load_steps=11 format=3 uid="uid://cxo4okkefoebx"]
+[gd_resource type="FontVariation" load_steps=23 format=3 uid="uid://cxo4okkefoebx"]
 
 [ext_resource type="FontFile" uid="uid://dvjkw2vt0b3yn" path="res://assets/fonts/noto-sans-v42-cyrillic_cyrillic-ext_devanagari_greek_greek-ext_latin_latin-ext_vietnamese-regular.woff2" id="1_xxsvt"]
 [ext_resource type="FontFile" uid="uid://bs4ar5pafu2sc" path="res://assets/fonts/noto-sans-jp-v55-japanese-regular.woff2" id="2_n2hlc"]
@@ -10,9 +10,21 @@
 [ext_resource type="FontFile" uid="uid://bagu5jbdjdb3e" path="res://assets/fonts/noto-sans-hk-v34-chinese-hongkong-regular.woff2" id="6_87c7d"]
 [ext_resource type="FontFile" uid="uid://d1k0kl8jjn1py" path="res://assets/fonts/noto-sans-hebrew-v50-hebrew-regular.woff2" id="6_ms6im"]
 [ext_resource type="FontFile" uid="uid://bpxwniwvlkq4c" path="res://assets/fonts/noto-sans-arabic-v33-arabic_math_symbols-regular.woff2" id="10_mkew4"]
+[ext_resource type="FontFile" uid="uid://74liuc1btsoy" path="res://assets/fonts/noto-sans-bengali-v32-bengali-regular.woff2" id="11_87c7d"]
+[ext_resource type="FontFile" uid="uid://ciuwfmef1epha" path="res://assets/fonts/noto-sans-georgian-v48-georgian_math_symbols-regular.woff2" id="12_l38io"]
+[ext_resource type="FontFile" uid="uid://iwjb7je3q6i7" path="res://assets/fonts/noto-sans-gujarati-v27-gujarati_math_symbols-regular.woff2" id="13_6kbvq"]
+[ext_resource type="FontFile" uid="uid://c4d5jngty3yxl" path="res://assets/fonts/noto-sans-canadian-aboriginal-v28-canadian-aboriginal_math_symbols-regular.woff2" id="14_xsppq"]
+[ext_resource type="FontFile" uid="uid://dyr6d6jiisca1" path="res://assets/fonts/noto-sans-kannada-v31-kannada-regular.woff2" id="15_xsppq"]
+[ext_resource type="FontFile" uid="uid://bdamoaxa014hu" path="res://assets/fonts/noto-sans-malayalam-v29-malayalam-regular.woff2" id="16_lnodt"]
+[ext_resource type="FontFile" uid="uid://updgmljg81sy" path="res://assets/fonts/noto-sans-khmer-v29-khmer-regular.woff2" id="17_8tfol"]
+[ext_resource type="FontFile" uid="uid://hp44dvi703a3" path="res://assets/fonts/noto-sans-lao-v33-lao-regular.woff2" id="18_krus4"]
+[ext_resource type="FontFile" uid="uid://rfeamburfkhy" path="res://assets/fonts/noto-sans-myanmar-v21-myanmar-regular.woff2" id="19_tj7sn"]
+[ext_resource type="FontFile" uid="uid://b0krqwvdjjsim" path="res://assets/fonts/noto-sans-telugu-v30-telugu-regular.woff2" id="20_0aeaf"]
+[ext_resource type="FontFile" uid="uid://bn7vkyik7y4dv" path="res://assets/fonts/noto-sans-ethiopic-v50-ethiopic-regular.woff2" id="21_oxqx4"]
+[ext_resource type="FontFile" uid="uid://pxhrgawd86o4" path="res://assets/fonts/noto-sans-sinhala-v36-sinhala-regular.woff2" id="22_bkx0s"]
 
 [resource]
-fallbacks = Array[Font]([ExtResource("2_n2hlc"), ExtResource("2_xxsvt"), ExtResource("4_08wjf"), ExtResource("5_mkew4"), ExtResource("6_87c7d"), ExtResource("4_n2hlc"), ExtResource("5_3jgmm"), ExtResource("6_ms6im"), ExtResource("10_mkew4")])
+fallbacks = Array[Font]([ExtResource("2_n2hlc"), ExtResource("2_xxsvt"), ExtResource("4_08wjf"), ExtResource("5_mkew4"), ExtResource("6_87c7d"), ExtResource("4_n2hlc"), ExtResource("5_3jgmm"), ExtResource("6_ms6im"), ExtResource("10_mkew4"), ExtResource("11_87c7d"), ExtResource("12_l38io"), ExtResource("13_6kbvq"), ExtResource("14_xsppq"), ExtResource("15_xsppq"), ExtResource("16_lnodt"), ExtResource("17_8tfol"), ExtResource("18_krus4"), ExtResource("19_tj7sn"), ExtResource("20_0aeaf"), ExtResource("21_oxqx4"), ExtResource("22_bkx0s")])
 base_font = ExtResource("1_xxsvt")
 opentype_features = {
 1667329140: 0
