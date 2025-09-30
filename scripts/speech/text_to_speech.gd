@@ -27,7 +27,7 @@ func _on_voices_ready(args: Array) -> void:
 
 	for voice_data: Dictionary in voices_data:
 		var voice := Voice.new(voice_data)
-		print("%s %s" % [voice.locale, voice.name])
+		# print("%s %s" % [voice.locale, voice.name])
 		_voices.append(voice)
 
 		if not _voices_by_locale.has(voice.locale):
