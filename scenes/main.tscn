@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ck0e78dj2sxj3"]
+[gd_scene load_steps=3 format=3 uid="uid://ck0e78dj2sxj3"]
 
 [ext_resource type="Script" uid="uid://bgl8nfxew3ml4" path="res://scenes/main.gd" id="1_o5qli"]
+[ext_resource type="Theme" uid="uid://csnscmsshc6x6" path="res://assets/theme.tres" id="2_0wfyh"]
 
 [node name="Main" type="Node2D"]
 visible = false
@@ -14,7 +15,7 @@ offset_top = 214.0
 offset_right = 522.0
 offset_bottom = 864.0
 theme_override_font_sizes/font_size = 24
-text = "Hey there! Welcome to Talk App!
+text = "Hey there! Welcome to Talk App!
 
 1.「Speech to Text」
 マイクで話すとテキストに変換されます。その後、自動で音声が再生されます。
@@ -44,27 +45,29 @@ theme_override_font_sizes/font_size = 24
 text = "Speech to Text"
 metadata/_edit_group_ = true
 
+[node name="LocaleOptionButton" type="OptionButton" parent="CanvasLayer"]
+offset_left = 21.0
+offset_top = 18.0
+offset_right = 521.0
+offset_bottom = 71.0
+theme = ExtResource("2_0wfyh")
+theme_override_font_sizes/font_size = 20
+selected = 0
+item_count = 1
+popup/item_0/text = "Languages"
+popup/item_0/id = 0
+
 [node name="VoiceOptionButton" type="OptionButton" parent="CanvasLayer"]
 offset_left = 21.0
 offset_top = 77.0
 offset_right = 521.0
 offset_bottom = 128.0
+theme = ExtResource("2_0wfyh")
 theme_override_font_sizes/font_size = 20
 selected = 0
 fit_to_longest_item = false
 item_count = 1
 popup/item_0/text = "Microsoft Haruka ssssss"
-popup/item_0/id = 0
-
-[node name="LocaleOptionButton" type="OptionButton" parent="CanvasLayer"]
-offset_left = 21.0
-offset_top = 18.0
-offset_right = 521.0
-offset_bottom = 57.0
-theme_override_font_sizes/font_size = 20
-selected = 0
-item_count = 1
-popup/item_0/text = "Languages"
 popup/item_0/id = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]

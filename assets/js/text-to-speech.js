@@ -7,6 +7,7 @@ class TextToSpeech {
   setup(on_voices_ready) {
     this._on_voices_ready = on_voices_ready
     speechSynthesis.onvoiceschanged = () => this.setup_voices()
+    speechSynthesis.getVoices()
   }
 
   setup_voices() {
@@ -22,12 +23,14 @@ class TextToSpeech {
     }))
 
     const voice_json = JSON.stringify(voice_data)
+    // console.log('voice_json', voice_json)
     this._on_voices_ready(voice_json)
 
     speechSynthesis.onvoiceschanged = null
   }
 
   speak(text, voice_uri) {
+    // console.log('speak', text, voice_uri)
     if (speechSynthesis.speaking) {
       speechSynthesis.cancel()
     }
@@ -36,11 +39,12 @@ class TextToSpeech {
     const selected_voice = this._voices.find(
       (voice) => voice.voiceURI === voice_uri
     )
+    utterance.lang = selected_voice.lang
     utterance.voice = selected_voice
     speechSynthesis.speak(utterance)
 
     // console.log('voice name: ' + selected_voice.name)
-    // console.log("Speaking text: ", text);
+    // console.log('Speaking text: ', text)
   }
 }
 

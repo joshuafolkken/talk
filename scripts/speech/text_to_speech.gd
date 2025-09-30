@@ -37,7 +37,7 @@ func _on_voices_ready(args: Array) -> void:
 		_locale_codes[voice.locale] = true
 
 	for locale_code: String in _voices_by_locale.keys():
-		#print("%s %s" % [locale_code, _voices_by_locale[locale_code].size()])
+		# print("%s %s" % [locale_code, _voices_by_locale[locale_code].size()])
 		_voices_by_locale[locale_code].sort_custom(
 			func(a: Voice, b: Voice) -> bool:
 				if a.local_service != b.local_service:
