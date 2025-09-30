@@ -39,6 +39,14 @@ class SpeechToText {
       console.error('Speech recognition error:', event.error, event)
       this._on_end()
     }
+
+    this._recognition.onspeechstart = () => {
+      console.log('Speech has been detected')
+    }
+
+    this._recognition.onspeechend = () => {
+      console.log('Speech has stopped being detected')
+    }
   }
 
   start(lang) {
