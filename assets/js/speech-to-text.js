@@ -22,6 +22,10 @@ class SpeechToText {
     this._recognition.onend = () => {
       this._on_end()
     }
+
+    this._recognition.onerror = (event) => {
+      console.log('error', event)
+    }
   }
 
   start(lang) {
