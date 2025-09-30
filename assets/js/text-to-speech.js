@@ -7,12 +7,17 @@ class TextToSpeech {
   setup(on_voices_ready) {
     this._on_voices_ready = on_voices_ready
     speechSynthesis.onvoiceschanged = () => this.setup_voices()
-    speechSynthesis.getVoices()
+    this.setup_voices()
   }
 
   setup_voices() {
     this._voices = speechSynthesis.getVoices()
 
+    if (this._voices.length == 0) {
+      return
+    }
+
+    // console.log('this._voices', this._voices)
     const voice_data = this._voices.map((voice, idx) => ({
       idx: idx,
       voice_uri: voice.voiceURI,
@@ -24,6 +29,7 @@ class TextToSpeech {
 
     const voice_json = JSON.stringify(voice_data)
     // console.log('voice_json', voice_json)
+    // console.log(this._on_voices_ready)
     this._on_voices_ready(voice_json)
 
     speechSynthesis.onvoiceschanged = null

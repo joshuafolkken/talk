@@ -14,6 +14,9 @@ var _js_on_end := JavaScriptBridge.create_callback(_on_end)
 func _init() -> void:
 	JSLoader.load(FILE_NAME)
 	_js = JavaScriptBridge.get_interface("speech_to_text")
+
+
+func setup() -> void:
 	_js.call("setup", _js_on_result, _js_on_end)
 
 

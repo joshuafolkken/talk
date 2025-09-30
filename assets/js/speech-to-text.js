@@ -11,8 +11,19 @@ class SpeechToText {
 
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition
+
+    if (!SpeechRecognition) {
+      console.error('SpeechRecognition is not supported in this browser')
+      return
+    }
+
     this._recognition = new SpeechRecognition()
     this._recognition.interimResults = true
+    this._recognition.continuous = false
+
+    this._recognition.onstart = () => {
+      console.log('Speech recognition started')
+    }
 
     this._recognition.onresult = (event) => {
       const result = event.results[0][0].transcript
@@ -20,20 +31,40 @@ class SpeechToText {
     }
 
     this._recognition.onend = () => {
+      console.log('Speech recognition ended')
       this._on_end()
     }
 
     this._recognition.onerror = (event) => {
-      console.log('error', event)
+      console.error('Speech recognition error:', event.error, event)
+      this._on_end()
+    }
+
+    this._recognition.onspeechstart = () => {
+      console.log('Speech has been detected')
+    }
+
+    this._recognition.onspeechend = () => {
+      console.log('Speech has stopped being detected')
     }
   }
 
   start(lang) {
+    if (!this._recognition) {
+      console.error('SpeechRecognition is not initialized')
+      return
+    }
+
+    console.log('Starting speech recognition with language:', lang)
+
     this._recognition.lang = lang
     this._recognition.start()
   }
 
   stop() {
+    if (!this._recognition) return
+
+    console.log('Stopping speech recognition')
     this._recognition.stop()
   }
 }

@@ -35,3 +35,7 @@ func get_short_name() -> String:
 	# 	return "Google"
 
 	return name
+
+
+func order_by_apple() -> int:
+	return int(voice_uri.begins_with("com.apple.voice.compact"))
