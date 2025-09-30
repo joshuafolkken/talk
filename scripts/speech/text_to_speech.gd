@@ -7,7 +7,6 @@ const FILE_NAME = "text-to-speech.js"
 
 var _js: JavaScriptObject
 var _js_on_voices_ready := JavaScriptBridge.create_callback(_on_voices_ready)
-var _voices: Array[Voice] = []
 var _locale_codes: Dictionary[String, bool] = {}
 var _voices_by_locale: Dictionary[String, Array] = {}
 
@@ -15,20 +14,26 @@ var _voices_by_locale: Dictionary[String, Array] = {}
 func _init() -> void:
 	JSLoader.load(FILE_NAME)
 	_js = JavaScriptBridge.get_interface("text_to_speech")
+
+
+func setup() -> void:
 	_js.call("setup", _js_on_voices_ready)
 
 
 func _on_voices_ready(args: Array) -> void:
 	var voices_json: String = args[0]
 	var voices_data: Array = JSON.parse_string(voices_json)
+	var voice_by_uri: Dictionary[String, Voice] = {}
 
-	_voices.clear()
 	_voices_by_locale.clear()
 
 	for voice_data: Dictionary in voices_data:
 		var voice := Voice.new(voice_data)
+		if voice_by_uri.has(voice.voice_uri):
+			continue
+
+		voice_by_uri[voice.voice_uri] = voice
 		# print("%s %s" % [voice.locale, voice.name])
-		_voices.append(voice)
 
 		if not _voices_by_locale.has(voice.locale):
 			_voices_by_locale[voice.locale] = []
@@ -42,12 +47,15 @@ func _on_voices_ready(args: Array) -> void:
 			func(a: Voice, b: Voice) -> bool:
 				if a.local_service != b.local_service:
 					return int(a.local_service) < int(b.local_service)
+
+				if a.order_by_apple() != b.order_by_apple():
+					return a.order_by_apple() > b.order_by_apple()
+
 				return a.idx < b.idx
 		)
 
-	Log.d("voices count: %s" % _voices.size())
+	Log.d("voices count: %s" % voice_by_uri.size())
 	Log.d("locale count: %s" % _voices_by_locale.size())
-
 	voices_ready.emit(_locale_codes.duplicate())
 
 

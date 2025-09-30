@@ -11,10 +11,12 @@ var _speech_to_text: SpeechToText
 func _ready() -> void:
 	_text_to_speech = TextToSpeech.new()
 	_text_to_speech.voices_ready.connect(_on_voices_ready)
+	_text_to_speech.setup()
 
 	_speech_to_text = SpeechToText.new()
 	_speech_to_text.result_received.connect(_on_text_result_received)
 	_speech_to_text.recognition_ended.connect(_on_recognition_ended)
+	_speech_to_text.setup()
 
 
 func _on_voices_ready(locale_codes: Dictionary[String, bool]) -> void:

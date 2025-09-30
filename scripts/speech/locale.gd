@@ -234,6 +234,7 @@ static func get_locales(locale_codes: Dictionary[String, bool]) -> Array[Locale]
 	_locale_by_name = {}
 
 	var locales_data := LOCALES_DATA + LOCALES_DATA_OTHERS if is_pc_or_mac() else LOCALES_DATA
+	# print("locales_data", locales_data)
 
 	for locale_data in locales_data:
 		var locale_code: String = locale_data[0]
