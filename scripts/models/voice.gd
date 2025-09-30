@@ -16,6 +16,8 @@ func _init(data: Dictionary) -> void:
 	local_service = data.get("local_service", false)
 	default = data.get("default", false)
 
+	locale = locale.replace("_", "-")
+
 
 func get_short_name() -> String:
 	if name.find("Microsoft") != -1:
