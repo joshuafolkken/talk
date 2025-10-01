@@ -219,8 +219,11 @@ func is_separator() -> bool:
 
 static func is_pc_or_mac() -> bool:
 	var user_agent: String = JavaScriptBridge.eval("navigator.userAgent")
+	print(user_agent)
 	user_agent = user_agent.to_lower()
 
+	if "iphone" in user_agent or "ipad" in user_agent or "ipod" in user_agent:
+		return false
 	if "windows" in user_agent:
 		return true
 	if "mac os" in user_agent or "macintosh" in user_agent:

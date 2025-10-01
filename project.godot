@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Talk"
-config/version="0.24.0"
+config/version="0.25.0"
 run/main_scene="uid://ck0e78dj2sxj3"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"

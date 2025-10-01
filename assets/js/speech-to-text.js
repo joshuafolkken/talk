@@ -26,6 +26,7 @@ class SpeechToText {
     }
 
     this._recognition.onresult = (event) => {
+      // console.log('Speech recognition result received:', event)
       const result = event.results[0][0].transcript
       this._on_result(result)
     }
@@ -41,11 +42,15 @@ class SpeechToText {
     }
 
     this._recognition.onspeechstart = () => {
-      console.log('Speech has been detected')
+      // console.log('Speech has been detected')
     }
 
     this._recognition.onspeechend = () => {
-      console.log('Speech has stopped being detected')
+      // console.log('Speech has stopped being detected')
+    }
+
+    this._recognition.onnomatch = () => {
+      console.log('No speech was recognized')
     }
   }
 
