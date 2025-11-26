@@ -11,11 +11,11 @@ pre-commit:
         fi
 
     gdscript-format:
-      glob: "*.gd"
+      glob: '*.gd'
       run: gdformat {staged_files}
 
     spell-check:
-      glob: "*.gd,*.md"
+      glob: '*.gd,*.md'
       run: npx cspell {staged_files}
 
 pre-push:
@@ -43,15 +43,15 @@ pre-push:
         fi
 
     gdscript-lint:
-      glob: "*.gd"
+      glob: '*.gd'
       run: gdlint {staged_files}
 
     gdscript-test:
       run: |
         if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
-          export GODOT_BIN='C:\Program Files\Godot\Godot_v4.4.1-stable_win64.exe'
+          export GODOT_BIN='C:\Program Files\Godot\Godot_v4.5.1-stable_win64.exe'
         elif [[ "$OSTYPE" == "darwin"* ]]; then
-            export GODOT_BIN=/Applications/Godot-4.4.1-stable.app/Contents/MacOS/Godot
+            export GODOT_BIN=/Applications/Godot-4.5.1-stable.app/Contents/MacOS/Godot
         else
           export GODOT_BIN=godot
         fi
